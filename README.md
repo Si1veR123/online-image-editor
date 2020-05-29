@@ -15,3 +15,5 @@ link to the image, for the client to reload.
 
 Custom middleware is included to check if cookies are enabled. If the cookiestest = true cookie isn't in the request, middleware redirects to
 a cookie check page, where a test cookie is set, and if it isn't there on the next request, asks users to enable cookies.
+
+Hosted at: online-image-editor.herokuapp.com

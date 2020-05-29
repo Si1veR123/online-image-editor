@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<title>Image Editor Home</title>
+<link rel="stylesheet" href="{% static 'home/homeStyle.css' %}">
+<link rel="stylesheet" href="{% static 'toWhiteAnimation.css' %}">
+{% endblock %}
+
+{% block 'content' %}
+<div id="home-screen">
+    <div id="home-container">
+        <h1 id="home-text">Need to edit your photos?<br>Try out our online editor.</h1>
+        <button type="button" id="editor-button" onclick="window.location = '/edit'" onmouseover="toWhite(this, this.children[0])" onmouseout="toBlack(this, this.children[0])"><span style="font-size: 2vh;">Try it now!</span></button>
+    </div>
+</div>
+{% endblock %}
+
+{% block 'scripts' %}
+<script src="{% static 'toWhiteTrigger.js' %}"></script>
+{% endblock %}

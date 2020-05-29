@@ -1,0 +1,135 @@
+#canvas {
+    position: relative;
+    margin-left: 10%;
+    margin-top: 2%;
+    height: 70%;
+    width: 80%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 2em black;
+    border-radius: 1em;
+}
+
+#canvas:hover {
+    cursor: crosshair;
+}
+
+#image {
+    position: absolute;
+}
+
+#toolbar {
+    width: 100%;
+    background-color: black;
+    box-shadow: 0 0 5px white;
+}
+
+#toolbar-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-justify-content: space-evenly;
+    -ms-justify-content: space-evenly;
+    justify-content: space-around;
+
+    flex-wrap: wrap;
+}
+
+.tool {
+    width: 5vw;
+    margin: 1% 0 1% 1%;
+    text-align: center;
+}
+
+.tool img {
+    width: 3vw;
+    height: 3vw;
+}
+
+.tool p {
+    margin: 0;
+    font-family: montserrat;
+    color: white;
+    font-size: 1vw;
+}
+
+.tool:hover {
+    cursor: pointer;
+}
+
+.flex-break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+@media only screen and (max-width: 900px) {
+    .tool {
+        width: 90px;
+    }
+    .tool p {
+        font-size: 2vw;
+    }
+}
+
+#crop-confirm-container {
+    position: absolute;
+
+    text-align: center;
+
+    bottom: 2%;
+
+    width: 100%;
+    height: 5vh;
+}
+
+#crop-confirm {
+    margin: auto;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    border-radius: 5px;
+    background: lightgreen;
+
+    -webkit-justify-content: space-evenly;
+    -ms-justify-content: space-evenly;
+    justify-content: space-around;
+
+    align-items: center;
+
+    transform: scale(0);
+
+    width: 20%;
+    height: 100%;
+
+    box-shadow: 0 0 5px grey;
+}
+
+#crop-confirm:hover {
+    cursor: pointer;
+}
+
+#crop-box {
+    position: absolute;
+    outline-style: dashed;
+    outline-width: 2px;
+    outline-color: blue;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+}
+
+.toolbar-menu {
+    display: none;
+    position: absolute;
+    border-radius: 5px;
+    background-color: black;
+    width: 80%;
+    z-index: 5;
+    left: 10%;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    box-shadow: 0 0 20px white;
+}

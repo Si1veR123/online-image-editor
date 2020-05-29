@@ -1,0 +1,54 @@
+{% load static %}
+
+<html style="overflow-x: hidden;">
+<head>
+    <link rel="stylesheet" href="{% static 'base/baseStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'base/buttonAnimation.css' %}">
+    <link rel="stylesheet" href="{% static 'base/menuUnderlineAnimation.css' %}">
+	<link rel="icon" href="{% static 'favicon.ico' %}">
+    {% block 'head' %}
+    {% endblock %}
+    <style>
+    @font-face {
+        font-family: "montserrat";
+        src: url({% static 'montserrat.woff' %}) format("woff");
+    }
+    </style>
+</head>
+<body style="margin: 0;">
+    <div id="navbar-container" style="overflow: hidden;">
+        <div id="navbutton" onclick="menuPressed()">
+            <div id="navbuttontab" tabindex="0" onclick="this.blur()"></div>
+            <svg class="navbuttonsvg">
+                <rect class="navbuttonrect" width="100%" height="100%"></rect>
+            </svg>
+            <svg class="navbuttonsvg" style="padding-top: 20%">
+                <rect class="navbuttonrect" width="100%" height="100%"></rect>
+            </svg>
+            <svg class="navbuttonsvg" style="padding-top: 20%">
+                <rect class="navbuttonrect" width="100%" height="100%"></rect>
+            </svg>
+        </div>
+        <div id="navbar-logoMask">
+            <img id="navbar-logo" src="{% static 'base/logo.svg' %}">
+        </div>
+        <div id="navbar-menu">
+            <a class="navbar-menuoption" onmouseover="underlineElement(this)" onmouseout="undoUnderline(this)" tabindex="-1" href="/">HOME</a>
+            <a class="navbar-menuoption" onmouseover="underlineElement(this)" onmouseout="undoUnderline(this)" tabindex="-1" href="/edit">EDITOR</a>
+            <a class="navbar-menuoption" onmouseover="underlineElement(this)" onmouseout="undoUnderline(this)" tabindex="-1" href="/faq">FAQ</a>
+        </div>
+    </div>
+    <div id="contentBlock">
+        <noscript style="text-align:center;">
+            <p id="noscript">Please enable JavaScript. This website uses it to edit your images.</p>
+        </noscript>
+        {% block 'content' %}
+        {% endblock %}
+    </div>
+        {% block 'scripts' %}
+        {% endblock %}
+    <script src="{% static 'base/menuUnderline.js' %}"></script>
+    <script src="{% static 'base/menuButtonTrigger.js' %}"></script>
+    <script src="{% static 'base/baseResponsive.js' %}"></script>
+</body>
+</html>

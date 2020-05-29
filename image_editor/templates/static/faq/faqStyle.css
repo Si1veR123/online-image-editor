@@ -1,0 +1,18 @@
+#faq-container {
+    width: 80%;
+    margin: 5% 0 5% 10%;
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+    box-shadow: 0 0 10px grey;
+}
+
+.question {
+    font-family: montserrat;
+    font-weight: bold;
+    font-size: 1.7vh;
+}
+
+.answer {
+    font-family: montserrat;
+    font-size: 1.5vh;
+}

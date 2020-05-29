@@ -1,0 +1,21 @@
+@keyframes underline {
+    from {width: 0; opacity: 0;}
+    to {width: 0; opacity: 1;}
+}
+
+@keyframes closeUnderline {
+    to {width: 0; opacity: 0;}
+}
+
+
+.underlineAnimation {
+    animation-name: underline;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.closeUnderlineAnimation {
+    animation-name: closeUnderline;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}

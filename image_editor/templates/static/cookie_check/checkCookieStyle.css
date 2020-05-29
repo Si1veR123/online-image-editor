@@ -1,0 +1,10 @@
+#message-container {
+    padding: 5% 15% 0 15%;
+    height: 50%;
+    width: 70%
+}
+
+#activate-message {
+    font-family: montserrat;
+    font-size: 3vh;
+}

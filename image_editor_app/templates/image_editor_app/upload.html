@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<title>Upload Image</title>
+<link rel="stylesheet" href="{% static 'image_editor_app/upload/uploadStyle.css' %}">
+<link rel="stylesheet" href="{% static 'toWhiteAnimation.css' %}">
+{% endblock %}
+
+{% block 'content' %}
+<div id="upload-container">
+    {% if error %}
+    <div id="error-container">
+        {% if error == "format" %}<p class="error-message">Invalid Format. Ensure the extension is .jpg, .jpeg or .png.</p>{% endif %}
+        {% if error == "damaged" %}<p class="error-message">The uploaded file was found to be damaged or unreadable.</p>{% endif %}
+        {% if error == "size" %}<p class="error-message">The uploaded file was found to be above the max size (5MB).</p>{% endif %}
+        {% if error == "server" %}<p class="error-message">Server Error Occured</p>{% endif %}
+        {% if error == "iplimit" %}
+            <p class="error-message">
+                You have reached the amount of sessions you can have on your network.
+                <br>
+                <input id="iperrorremovebutton" value="Remove old session" type="button" onclick="removeSession()">
+            </p>
+        {% endif %}
+    </div>
+    {% endif %}
+    <img id="image" src="{% static 'image_editor_app/upload/bg.JPG' %}">
+    <div id="form-container">
+        <form action="/edit/api/upload" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div id="file-container" tabindex="0" onmouseover="toWhite(this, this.children[0].children[0])" onmouseout="toBlack(this, this.children[0].children[0])">
+                <div id="upload-text-container">
+                    <p id="upload-text">Upload</p>
+                </div>
+                {% if error != "iplimit" %}<input id="uploadfile" oninput="this.parentElement.parentElement.submit()" tabindex="-1" type="file" accept="image/*" name="image">{% endif %}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block 'scripts' %}
+<script src="{% static 'image_editor_app/upload/uploadEnterListener.js' %}"></script>
+<script src="{% static 'toWhiteTrigger.js' %}"></script>
+<script src="{% static 'image_editor_app/upload/removeSession.js' %}"></script>
+{% endblock %}

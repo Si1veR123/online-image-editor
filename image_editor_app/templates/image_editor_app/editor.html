@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<title>Online Image Editor</title>
+<link rel="stylesheet" href="{% static 'image_editor_app/editor/editorStyle.css' %}">
+<link rel="stylesheet" href="{% static 'image_editor_app/editor/infoStyle.css' %}">
+{% endblock %}
+
+{% block 'content' %}
+<div id="info" style="display: none;">
+    <div id="infoBox">
+        <ul style="font-family: montserrat; margin: 0 5% 0 5%; padding: 5% 0 5% 0; list-style-type:none">
+            <li>
+                <p><strong>This website uses cookies so you can return to your image, even after closing the window.</strong></p>
+            </li>
+            <li>
+                <p><strong>Use the toolbar to zoom, undo and apply edits to your image.</strong></p>
+                <img class="tut" src="{% static 'tuts/zoom.gif' %}">
+            </li>
+            <li>
+                <p><strong>You can crop, rotate and apply colour adjustments.</strong></p>
+                <img class="tut" src="{% static 'tuts/edit.gif' %}">
+            </li>
+            <li>
+                <p><strong>Click on the image to move around.</strong></p>
+                <img class="tut" src="{% static 'tuts/move.gif' %}">
+            </li>
+            <li>
+                <p><strong>To crop, click on the top left corner, and then the bottom right.</strong></p>
+                <img class="tut" src="{% static 'tuts/crop.gif' %}">
+            </li>
+            <li>
+                <p><strong>Please press exit after you are finished with your edit.</strong></p>
+            </li>
+            <li>
+                <input id="editor-button" type="button" value="Editor!" onclick="switchScreen(document.getElementById('info'), true)">
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="editor" style="display: initial;">
+    <div id="toolbar">
+        <div id="toolbar-container">
+            <div class="tool" onclick="window.location = '/edit/close'">
+                <img src="{% static 'icons/cross.svg' %}">
+                <p>Exit</p>
+            </div>
+            <div class="tool" onclick="switchScreen(document.getElementById('editor'), true)">
+                <img src="{% static 'icons/help.svg' %}">
+                <p>Help</p>
+            </div>
+            <div class="tool" onclick="zoom()">
+                <img src="{% static 'icons/zoom.svg' %}">
+                <p>Zoom</p>
+            </div>
+            <div class="tool"  onclick="zoomOut()">
+                <img src="{% static 'icons/zoomout.svg' %}">
+                <p>Zoom Out</p>
+            </div>
+            <div class="tool" onclick="resetZoom()">
+                <img src="{% static 'icons/resetzoom.svg' %}">
+                <p>Reset Zoom</p>
+            </div>
+            <div class="tool"  onclick="resetCenter()">
+                <img src="{% static 'icons/recenter.svg' %}">
+                <p>Reset Position</p>
+            </div>
+            <div class="tool" onclick="undo()">
+                <img src="{% static 'icons/undo.svg' %}">
+                <p>Undo</p>
+            </div>
+            <div class="tool" onclick="redo()">
+                <img src="{% static 'icons/redo.svg' %}">
+                <p>Redo</p>
+            </div>
+            <div class="flex-break"></div>
+            <div class="tool" onclick="selectCrop()">
+                <img src="{% static 'icons/crop.svg' %}">
+                <p id="crop-text">Crop</p>
+            </div>
+            <div class="tool" onclick="rotate(0)">
+                <img src="{% static 'icons/rotate.svg' %}" style="-webkit-transform: scaleX(-1);transform: scaleX(-1);">
+                <p>Rotate Left</p>
+            </div>
+            <div class="tool" onclick="rotate(1)">
+                <img src="{% static 'icons/rotate.svg' %}">
+                <p>Rotate Right</p>
+            </div>
+            <div class="tool" id="adj-tool" onclick="adjMenuClick()">
+                <img src="{% static 'icons/adjustments.svg' %}">
+                <p>Adjust</p>
+            </div>
+            <a id="download" href="" download="image" style="text-decoration: none;">
+                <div class="tool" id="download-tool">
+                    <img src="{% static 'icons/download.svg' %}">
+                    <p>Download</p>
+                </div>
+            </a>
+            <div id="adj-menu" class="toolbar-menu">
+                <form onsubmit="adjust(this); return false" style="height: 100%;">
+                    <table style="height: 100%; width: 100%;">
+                        <tr>
+                            <td>
+                                <div style="width:100%;padding:2% 0 0 2%;">
+                                    <img src="{% static 'icons/hue.svg' %}" style="height: 5vw;vertical-align:middle;text-align:center;">
+                                    <span style="font-family:montserrat;color:white;">H</span>
+                                </div>
+                            </td>
+                            <td style="text-align:center;">
+                                <p id="h-value" style="display:inline;font-family:montserrat;color:white;">0</p>
+                            </td>
+                            <td style="width:70%">
+                                <input id="h-slider" type="range" style="width: 80%;" onchange="updateMenuVal('h-value', this)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width:100%;padding-left:2%;">
+                                    <img src="{% static 'icons/saturation.svg' %}" style="height: 5vw;vertical-align:middle;text-align:center;">
+                                    <span style="font-family:montserrat;color:white;">S</span>
+                                </div>
+                            </td>
+                            <td style="text-align:center;">
+                                <p id="s-value" style="display:inline;font-family:montserrat;color:white;">0</p>
+                            </td>
+                            <td style="width:70%">
+                                <input id="s-slider" type="range" style="width: 80%;" onchange="updateMenuVal('s-value', this)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width:100%;padding-left:2%;">
+                                    <img src="{% static 'icons/brightness.svg' %}" style="height: 5vw;vertical-align:middle;text-align:center;">
+                                    <span style="font-family:montserrat;color:white;">L</span>
+                                </div>
+                            </td>
+                            <td style="text-align:center;">
+                                <p id="l-value" style="display:inline;font-family:montserrat;color:white;">0</p>
+                            </td>
+                            <td style="width:70%">
+                                <input id="l-slider" type="range" style="width: 80%;" onchange="updateMenuVal('l-value', this)">
+                            </td>
+                        </tr>
+                    </table>
+                    <input id="adj-submit" type="submit" value="Update">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="canvas">
+        <img id="image" src="{% static 'image_editor_app/editor/loading.jpg' %}" data-centeroffset="0,0">
+        <div id="crop-box"></div>
+    </div>
+    <div id="crop-confirm-container">
+        <div id="crop-confirm" onclick="crop()">
+            <p id="crop-confirm-text" style="font-family: montserrat; color: white; margin: 0;">Confirm Crop</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block 'scripts' %}
+<script src="{% static 'image_editor_app/editor/imageLinkGetter.js' %}"></script>
+<script src="{% static 'image_editor_app/editor/imageSizeSetter.js' %}"></script>
+<script src="{% static 'image_editor_app/editor/imageToolbar.js' %}"></script>
+<script src="{% static 'image_editor_app/editor/ajaxChanges.js' %}"></script>
+<script src="{% static 'image_editor_app/editor/responsive.js' %}"></script>
+<script src="{% static 'image_editor_app/editor/infoEditorSwitch.js' %}"></script>
+{% endblock %}

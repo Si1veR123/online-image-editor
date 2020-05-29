@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<title>Online Image Editor</title>
+<meta id="page-info" name="desc" content="cookiecheck">
+<link rel="stylesheet" href="{% static 'cookie_check/checkCookieStyle.css' %}">
+{% endblock %}
+
+{% block 'content' %}
+<div id="message-container">
+    <p id="activate-message">Testing if your browser has cookies enabled. You should be redirected soon.</p>
+</div>
+{% endblock %}
+
+{% block 'scripts' %}
+<script>window.location = "/?a=verify"</script>
+{% endblock %}

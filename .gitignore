@@ -1,0 +1,9 @@
+*.log
+*.pot
+*.pyc
+__pycache__/
+image_editor_proj/media
+image_editor_proj/static
+clear_sessions.py
+go.bat
+test_large_image.jpg

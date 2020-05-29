@@ -1,0 +1,58 @@
+#home-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 80%;
+
+    text-align: center;
+}
+
+#home-screen {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+#home-text {
+    font-size: 4vw;
+    font-family: montserrat;
+}
+
+#editor-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-justify-content: space-evenly;
+    -ms-justify-content: space-evenly;
+    justify-content: space-around;
+    align-items: center;
+
+    border: 0 solid;
+    color: white;
+    font-family: montserrat;
+    width: 100%;
+    height: 5vh;
+    border-radius: 20em;
+    background-color: black;
+    box-shadow: 0 0 5px grey;
+}
+
+#editor-button:hover {
+    cursor: pointer;
+}

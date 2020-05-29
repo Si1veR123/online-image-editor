@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "*"
+pillow = "*"
+dj-database-url = "*"
+psycopg2 = "*"
+apscheduler = "*"
+numpy = "*"
+bs4 = "*"
+django-ipware = "*"
+gunicorn = "*"
+django-heroku = "*"
+
+[requires]
+python_version = "3.7"

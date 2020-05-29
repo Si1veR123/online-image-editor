@@ -1,0 +1,28 @@
+#infoBox {
+    width: 80%;
+    margin-left: 10%;
+    background-color: rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#infobox p {
+    font-size: 3vw;
+}
+
+#editor-button {
+    font-family: montserrat;
+    border-radius: 3em;
+    font-size: 2vw;
+    width: 70%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    margin-top: 3%;
+}
+
+#editor-button:hover{
+    cursor: hand;
+}
+
+.tut {
+    width: 80%;
+    box-shadow: 0 0 5px grey;
+}

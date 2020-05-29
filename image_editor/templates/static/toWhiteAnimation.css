@@ -1,0 +1,44 @@
+@keyframes toWhite {
+    from {background-color: black;}
+    to {background-color: white;}
+}
+
+@keyframes toBlack {
+    from {background-color: white;}
+    to {background-color: black;}
+}
+
+@keyframes textToWhite {
+    from {color: black;}
+    to {color: white;}
+}
+
+@keyframes textToBlack {
+    from {color: white;}
+    to {color: black;}
+}
+
+
+.toWhiteAnimation {
+    animation-name: toWhite;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.toBlackAnimation {
+    animation-name: toBlack;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.textToWhiteAnimation {
+    animation-name: textToWhite;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.textToBlackAnimation {
+    animation-name: textToBlack;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}

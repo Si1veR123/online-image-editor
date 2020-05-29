@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<title>Image Editor FAQ</title>
+<link rel="stylesheet" href="{% static 'faq/faqStyle.css' %}">
+{% endblock %}
+
+{% block 'content' %}
+<div id="faq-container">
+    <ul style="list-style-type:none; padding: 5%;">
+        <li>
+            <div class="question">
+                <p>Can I close the window and return to editing later?</p>
+            </div>
+            <div class="answer">
+                <p>
+                    Yes, the website uses a cookie to identify your device. Images are deleted on our server after 2 weeks or 1 week of inactivity. Images are also cleared every month.
+                </p>
+            </div>
+
+        </li>
+        <li>
+            <div class="question">
+                <p>How do I use the editor?</p>
+            </div>
+            <div class="answer">
+                <p>
+                    Upload your image <a href="/edit/upload" target="_blank">here</a>. If you have already uploaded an image, press the close button on the editor, and try again.
+                    You can then use the crop, rotate and adjust tools to edit your image. Press the help button for information on how to use the tools.
+                </p>
+            </div>
+        </li>
+        <li>
+            <div class="question">
+                <p>Why do I need JavaScript enabled?</p>
+            </div>
+            <div class="answer">
+                <p>
+                    JavaScript allows the website to format itself correctly, and contact the server to edit your images.
+                </p>
+            </div>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block 'scripts' %}
+{% endblock %}

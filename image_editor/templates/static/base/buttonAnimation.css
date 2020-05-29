@@ -1,0 +1,111 @@
+@keyframes topMenu {
+     100% {transform: rotate(45deg); transform-origin: 0 0;} /*width: 10px}*/
+ }
+
+@keyframes bottomMenu {
+    100% {transform: rotate(-45deg); transform-origin: 0 100%;} /*width: 10px}*/
+}
+
+@keyframes middleMenu {
+    100% {width: 0; opacity: 0}
+}
+
+@keyframes menuOptions {
+    0% {right: -100%;}
+    100% {right: 0;}
+}
+
+@keyframes logo {
+    0% {left: 25%; opacity: 1; filter: opacity(1)}
+    50% {opacity: 0; filter: opacity(0)}
+    100% {left: -100%;}
+}
+
+
+.topMenuAnimation {
+    animation-name: topMenu;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.bottomMenuAnimation {
+    animation-name: bottomMenu;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.middleMenuAnimation {
+    animation-name: middleMenu;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.menuOptionsAnimation {
+    animation-name: menuOptions;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.logoAnimation {
+    animation-name: logo;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes closeTopMenu {
+    0% {transform: rotate(45deg); transform-origin: 0 0;}
+    100% {transform: rotate(0); transform-origin: 0 0;}
+}
+
+@keyframes closeBottomMenu {
+    0% {transform: rotate(-45deg); transform-origin: 0 100%;}
+    100% {transform: rotate(0); transform-origin: 0 100%;}
+}
+
+@keyframes closeMiddleMenu {
+    0% {width: 0; opacity: 0}
+    100% {width: 0; opacity: 1}
+}
+
+@keyframes closeMenuOptions {
+    0% {right: 0;}
+    100% {right: -100%;}
+}
+
+@keyframes closeLogo {
+    0% {left: -100%; opacity: 0; filter: opacity(0)}
+    30% {opacity: 0; filter: opacity(0)}
+    100% {left: 25%;}
+}
+
+
+.closeTopMenuAnimation {
+    animation-name: closeTopMenu;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.closeBottomMenuAnimation {
+    animation-name: closeBottomMenu;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.closeMiddleMenuAnimation {
+    animation-name: closeMiddleMenu;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.closeMenuOptionsAnimation {
+    animation-name: closeMenuOptions;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.closeLogoAnimation {
+    animation-name: closeLogo;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}

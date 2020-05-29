@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<title>Online Image Editor</title>
+<meta id="page-info" name="desc" content="activatecookie">
+<link rel="stylesheet" href="{% static 'activateCookies/activateStyle.css' %}">
+{% endblock %}
+
+{% block 'content' %}
+<div id="message-container">
+    <p id="activate-message">This website requires cookies. We use this to identify your device, allowing us to protect your images.</p>
+</div>
+<div id="activated-container">
+    <div id="activate-text-container" onclick="window.location = '/edit'">
+        <p id="activate-text">Activated</p>
+    </div>
+</div>
+{% endblock %}
